@@ -1,0 +1,92 @@
+PROJECT ABSTRACT: ACTIONALYZE
+================================================================================
+Corporate Action Tracking & AI-Driven Market Analysis Platform
+================================================================================
+
+1. EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+Actionalyze is a professional fintech web application designed to track corporate stock actions—such as dividends, stock splits, and mergers—and analyze their potential market impact. By integrating real-time financial data with Generative AI, the platform transforms raw market events into actionable, human-readable insights for investors.
+
+The application functions as a comprehensive dashboard where users can monitor market movers, visualize historical price performance, manage custom alerts, and generate AI-powered reports on financial health and sentiment.
+
+2. SYSTEM ARCHITECTURE
+--------------------------------------------------------------------------------
+The application utilizes a Client-Side Rendering (CSR) architecture built on React, emphasizing modularity, performance, and seamless user interaction.
+
+[ Frontend Layer ]
+    |
+    +-- View Controllers (Pages): Manages route-specific logic and layout.
+    +-- UI Components: Reusable, accessible interface elements (ShadCN-inspired).
+    +-- State Management: React Hooks for local state and data persistence.
+
+[ Service Layer ]
+    |
+    +-- Data Service (Hybrid Engine): 
+    |     - Primary: Financial Modeling Prep (FMP) API for live market data.
+    |     - Secondary: Deterministic Mock Engine for robust offline/demo capabilities.
+    |
+    +-- AI Service (Gemini Integration):
+          - Text Generation: Analyzes corporate actions for sentiment and impact.
+          - Image Generation: Creates visual market summaries.
+
+3. CORE FEATURES
+--------------------------------------------------------------------------------
+
+A. INTELLIGENT DASHBOARD
+   - Market Movers: Real-time visualization of top performing stocks with sector tags.
+   - Action Feed: Chronological stream of corporate events (Dividends, Splits, M&A).
+   - Smart Search: Debounced autocomplete search traversing a database of 100+ major US assets.
+   - Status Indicators: Visual feedback for Live API vs. Simulation modes.
+
+B. ANALYTICS & INSIGHTS (Company Details)
+   - Interactive Charting: Recharts-powered area charts with dynamic time ranges (1W, 1M, 3M, 1Y).
+   - Genkit Financial Analyst: AI module that ingests market context to produce structured impact reports (e.g., Yield Sustainability, Price Outlook).
+   - Visual Synthesis: On-demand generation of professional financial infographics.
+
+C. ALERT MANAGEMENT system
+   - Custom Triggers: Supports Price Targets (>$200) and Event Types (Dividend Announcements).
+   - Lifecycle Management: Create, Pause, Activate, and Delete alerts.
+   - Summary Dashboard: Metrics for Total, Active, and Paused alerts.
+
+4. TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+* Language:       TypeScript 5.x (Strict Mode)
+* Framework:      React 19.x (Functional Components, Hooks)
+* Routing:        React Router DOM
+* Styling:        Tailwind CSS (Theme: Emerald Professional)
+* Visualization:  Recharts (SVG-based D3 wrapper)
+* AI/LLM:         Google GenAI SDK (Gemini 2.5 Flash & Flash Image)
+* Data Provider:  Financial Modeling Prep (FMP)
+
+5. DATA STRATEGY & ALGORITHMS
+--------------------------------------------------------------------------------
+The application employs a "Graceful Degradation" strategy for data retrieval:
+
+1. Hybrid Data Engine:
+   - The system first attempts to fetch data via the FMP API using a stored key.
+   - Upon failure or missing key, it falls back to a high-fidelity Mock Engine.
+   - The Mock Engine uses a "Seeded Randomness" algorithm (Linear Congruential Generator) based on stock tickers. This ensures that simulated prices, charts, and dates remain consistent across sessions, providing a stable demo experience.
+
+2. Context-Aware Prompt Engineering:
+   - The AI Service dynamically constructs prompts based on the Action Type.
+   - Example: If analyzing a 'Dividend', the system injects specific instructions to evaluate "Yield Attractiveness" and "Payout Ratio Sustainability," whereas a 'Merger' triggers instructions regarding "Synergies" and "Regulatory Risk."
+
+6. FILE STRUCTURE
+--------------------------------------------------------------------------------
+/src
+ ├── components/       # Reusable UI building blocks
+ │   ├── ui/           # Primitives (Button, Card, Tabs, Modal)
+ │   └── Navbar.tsx    # Responsive navigation
+ ├── pages/            # Main application views
+ │   ├── Home.tsx      # Dashboard & Market Movers
+ │   ├── CompanyDetails.tsx # Charts & AI Analysis
+ │   └── Alerts.tsx    # Alert Logic & Forms
+ ├── services/         # Business Logic
+ │   ├── dataService.ts   # API handling & Mock Data generation
+ │   └── geminiService.ts # LLM integration
+ ├── types.ts          # TypeScript interfaces & Enums
+ └── App.tsx           # Route configuration
+
+================================================================================
+© Actionalyze - Enterprise Financial Tracking Application
+================================================================================
