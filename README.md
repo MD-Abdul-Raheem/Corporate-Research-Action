@@ -191,5 +191,3 @@ This project is for demonstration purposes. All rights reserved.
 For questions or issues, please open an issue in the repository.
 
 ---
-
-**Built with ❤️ using React, TypeScript, and Google Gemini AI**
